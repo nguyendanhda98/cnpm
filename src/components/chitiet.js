@@ -16,6 +16,7 @@ class ChiTiet extends React.Component {
           diachi: y.diachi,
           giaphong: y.giaphong,
           chitiet: y.chitiet,
+          emailchu: y.emailchu,
         });
       });
       console.log(x);
@@ -32,9 +33,12 @@ class ChiTiet extends React.Component {
           <div className="card-body">
             <h5 className="card-title">{this.state.diachi}</h5>
             <p className="card-text">{this.state.giaphong}</p>
-            <a href="/chitiet" className="btn btn-primary">
+            <a href="#" className="btn btn-primary">
               Đặt phòng
             </a>
+          </div> 
+          <div class="form-group">
+            Chủ phòng: {this.state.emailchu} <br />
           </div>
         </div>
 
