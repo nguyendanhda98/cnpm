@@ -41,17 +41,17 @@ class ChuNha extends React.Component {
       diachi: this.state.diachi,
       giaphong: this.state.giaphong,
       chitiet: this.state.chitiet,
+      // emailchu: "",
+      // emailkhach: "",
+      // thue: "",
     };
     axios.post("http://localhost:3030/phong", data);
-    // this.setState({ thanhpho: "", diachi: "", giaphong: "", chitiet: "" });
-    this.setState({
-      chitiet: "",
-    });
+    this.props.history.push("/QuanLyPhong");
   };
 
   render() {
     return (
-      <form onSubmit={this.taophong}>
+      <div>
         <p>Trở thành chủ nhà</p>
 
         <div className="form-group">
@@ -164,10 +164,10 @@ class ChuNha extends React.Component {
           ></textarea>
         </div>
 
-        <button type="submit" className="btn btn-primary">
+        <button onClick={this.taophong} className="btn btn-primary">
           Bắt đầu tạo phòng cho thuê
         </button>
-      </form>
+      </div>
     );
   }
 }

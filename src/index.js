@@ -14,19 +14,19 @@ import YeuCauDatPhong from "./components/YeuCauDatPhong";
 import QuanLyPhong from "./components/QuanLyPhong";
 import Admin from "./components/Admin";
 
-
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <DieuHuong />
+          {/* <DieuHuong user={localStorage.getItem("ten")} /> */}
+          <DieuHuong user={localStorage.getItem("ten")} />
           <Route exact path="/" component={TimKiem} />
           <Route path="/dangnhap" component={DangNhap} />
           <Route path="/dangky" component={DangKy} />
           <Route path="/chunha" component={ChuNha} />
           <Route path="/chitiet" component={ChiTiet} />
-          <Route path="/ThongTinCaNhan" component={ThongTinCaNhan} />
+          <Route path="/ThongTinCaNhan" component={ThongTinCaNhan } />
           <Route path="/PhongDaDat" component={PhongDaDat} />
           <Route path="/PhongDaChoThue" component={PhongDaChoThue} />
           <Route path="/YeuCauDatPhong" component={YeuCauDatPhong} />

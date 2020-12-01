@@ -1,20 +1,18 @@
-// phong-model.js - A mongoose model
-//
+// chunha-model.js - A mongoose model
+// 
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 module.exports = function (app) {
-  const modelName = "phong";
-  const mongooseClient = app.get("mongooseClient");
+  const modelName = 'chunha';
+  const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const schema = new Schema(
     {
-      thanhpho: { type: String, required: false },
-      diachi: { type: String, required: false },
-      giaphong: { type: Number, required: false },
-      chitiet: { type: String, required: false },
-      emailchu: { type: String, required: false },
-      emailkhach: { type: String, required: false },
-      emailthue: { type: String, required: false },
+      ten: { type: String, required: true },
+      email: { type: String, required: true },
+      sdt: { type: Number, required: true },
+      matkhau: { type: String, required: true },
+      
     },
     {
       timestamps: true,
@@ -27,4 +25,5 @@ module.exports = function (app) {
     mongooseClient.deleteModel(modelName);
   }
   return mongooseClient.model(modelName, schema);
+  
 };

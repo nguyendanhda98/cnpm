@@ -6,7 +6,7 @@ class TaiKhoan extends React.Component {
     // e.preventDefault();
     let id = this.props.taikhoan._id;
     let url = `http://localhost:3030/taikhoan/${id}`;
-    let del = axios.delete(url);
+    axios.delete(url);
   };
 
   render() {

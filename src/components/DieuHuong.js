@@ -3,6 +3,17 @@ import "../css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 class DieuHuong extends React.Component {
+
+  state = {ten: this.props.user}
+
+  dangxuat = (e) => {
+    e.preventDefault();
+    alert("Đăng xuất thành công");
+    localStorage.removeItem("email");
+    localStorage.removeItem("ten");
+    window.location.replace("/");
+  }
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,9 +57,13 @@ class DieuHuong extends React.Component {
             <Link className="nav-item nav-link" to="/QuanLyPhong">
               Quản lý phòng
             </Link>
+            <Link className="nav-item nav-link" to="#" onClick={this.dangxuat}>
+              Đăng Xuất
+            </Link>
             <Link className="nav-item nav-link" to="/Admin">
               Admin
             </Link>
+    <p className="nav-item nav-link">Xin chào {this.state.ten}</p>
           </div>
         </div>
       </nav>

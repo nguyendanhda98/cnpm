@@ -12,6 +12,7 @@ module.exports = function (app) {
       email: { type: String, required: true },
       sdt: { type: Number, required: true },
       matkhau: { type: String, required: true },
+      loai: { type: String, required: true },
     },
     {
       timestamps: true,
