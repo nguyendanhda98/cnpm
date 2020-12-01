@@ -34,19 +34,34 @@ class ChuNha extends React.Component {
   };
 
   taophong = (e) => {
-    alert("Tạo phòng thành công");
+    let thanhpho1 = this.state.thanhpho;
+    let diachi1 = this.state.diachi;
+    let giaphong1 = this.state.giaphong;
+    let chitiet1 = this.state.chitiet;
+    let emailchu1 = localStorage.getItem("email");
+    let emailkhach1 = "";
+    let emailthue1 = "";
 
-    const data = {
-      thanhpho: this.state.thanhpho,
-      diachi: this.state.diachi,
-      giaphong: this.state.giaphong,
-      chitiet: this.state.chitiet,
-      // emailchu: "",
-      // emailkhach: "",
-      // thue: "",
-    };
-    axios.post("http://localhost:3030/phong", data);
-    this.props.history.push("/QuanLyPhong");
+    if (
+      thanhpho1 === "" ||
+      (diachi1 === "") | (giaphong1 === "") | (chitiet1 === "")
+    ) {
+      alert("Vui lòng điền đầy đủ thông tin");
+    } else {
+      alert("Tạo phòng thành công");
+
+      const data = {
+        thanhpho: this.state.thanhpho,
+        diachi: this.state.diachi,
+        giaphong: this.state.giaphong,
+        chitiet: this.state.chitiet,
+        emailchu: localStorage.getItem("email"),
+        emailkhach: "",
+        emailthue: "",
+      };
+      axios.post("http://localhost:3030/phong", data);
+      this.props.history.push("/QuanLyPhong");
+    }
   };
 
   render() {
@@ -57,6 +72,7 @@ class ChuNha extends React.Component {
         <div className="form-group">
           <label htmlFor="city">Thành phố </label>
           <select onChange={this.thanhpho} id="city" name="thanhpho">
+            <option value=""></option>
             <option value="An Giang">An Giang</option>
             <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
             <option value="Bắc Giang">Bắc Giang</option>
