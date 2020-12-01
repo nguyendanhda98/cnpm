@@ -38,9 +38,7 @@ class ChuNha extends React.Component {
     let diachi1 = this.state.diachi;
     let giaphong1 = this.state.giaphong;
     let chitiet1 = this.state.chitiet;
-    let emailchu1 = localStorage.getItem("email");
-    let emailkhach1 = "";
-    let emailthue1 = "";
+    
 
     if (
       thanhpho1 === "" ||
