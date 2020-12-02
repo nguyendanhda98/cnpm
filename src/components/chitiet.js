@@ -7,10 +7,10 @@ class ChiTiet extends React.Component {
 
     this.state = { diachi: "", giaphong: "", chitiet: "" };
 
-    const chitiet = async () => {
-      const id = this.props.location.search;
-      const res = await axios.get(`http://localhost:3030/phong${id}`);
-      const x = res.data.data; //mang
+    let chitiet = async () => {
+      let id = this.props.location.search;
+      let res = await axios.get(`http://localhost:3030/phong${id}`);
+      let x = res.data.data; //mang
       x.map((y) => {
         return this.setState({
           diachi: y.diachi,
@@ -19,11 +19,24 @@ class ChiTiet extends React.Component {
           emailchu: y.emailchu,
         });
       });
-      console.log(x);
     };
 
     chitiet();
   }
+
+  datphong = async (e) => {
+    let id = this.props.location.search;
+    let url = `http://localhost:3030/phong${id}`;
+    let temp = await axios.get(url);
+    let x = temp.data.data;
+    let idd = x[0]._id;
+    let url2 = `http://localhost:3030/phong/${idd}`;
+    let emailkhach = localStorage.getItem("email");
+    let data = { emailkhach: emailkhach };
+    axios.patch(url2, data);
+    alert("Đặt phòng Thành Công");
+    this.props.history.push("/PhongDaDat");
+  };
 
   render() {
     return (
@@ -33,10 +46,10 @@ class ChiTiet extends React.Component {
           <div className="card-body">
             <h5 className="card-title">{this.state.diachi}</h5>
             <p className="card-text">{this.state.giaphong}</p>
-            <a href="#" className="btn btn-primary">
+            <button className="btn btn-primary" onClick={this.datphong}>
               Đặt phòng
-            </a>
-          </div> 
+            </button>
+          </div>
           <div class="form-group">
             Chủ phòng: {this.state.emailchu} <br />
           </div>
