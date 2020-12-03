@@ -6,7 +6,7 @@ class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = { taikhoan: [] };
-    
+
     let dulieu = async () => {
       let res1 = await axios.get(`http://localhost:3030/taikhoan`);
       let x = res1.data.data; //mang
