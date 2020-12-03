@@ -35,7 +35,8 @@ class ChiTiet extends React.Component {
     let data = { emailkhach: emailkhach };
     axios.patch(url2, data);
     alert("Đặt phòng Thành Công");
-    this.props.history.push("/PhongDaDat");
+    // this.props.history.push("/PhongDaDat");
+    window.location.replace("/PhongDaDat");
   };
 
   render() {
