@@ -16,14 +16,19 @@ class TimKiem extends React.Component {
     if (x.length === 0) {
       this.setState({ phongs: "Hiện tại chưa có phòng ở đây" });
     } else {
-      const z = x.map((y) => {
-        return (
-          <div key={y._id}>
-            <Phong phong={y} />
-          </div>
-        );
-      });
-      this.setState({ phongs: z });
+      let a = x.filter((b) => b.emailkhach === "");
+      if (a.length === 0) {
+        this.setState({ phongs: "Hiện tại chưa có phòng ở đây" });
+      } else {
+        let z = a.map((y) => {
+          return (
+            <div key={y._id}>
+              <Phong phong={y} />
+            </div>
+          );
+        });
+        this.setState({ phongs: z });
+      }
     }
   };
 
