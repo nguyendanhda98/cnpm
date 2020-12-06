@@ -24,7 +24,7 @@ class QuanLyPhong extends React.Component {
             khach = "Hiện";
           }
           return (
-            <div key={y._id}>
+            <div key={y._id} >
               <Phong phong={y} />
               <input
                 id={y._id}
@@ -81,7 +81,6 @@ class QuanLyPhong extends React.Component {
 
   render() {
     return (
-      // phong
       <div className="row">{this.state.phong}</div>
     );
   }

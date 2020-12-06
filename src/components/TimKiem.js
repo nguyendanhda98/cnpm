@@ -16,7 +16,8 @@ class TimKiem extends React.Component {
     if (x.length === 0) {
       this.setState({ phongs: "Hiện tại chưa có phòng ở đây" });
     } else {
-      let a = x.filter((b) => b.emailkhach === "");
+      let ax = x.filter((b) => b.emailkhach === "");
+      let a = ax.filter((b) => b.emailthue === "");
       if (a.length === 0) {
         this.setState({ phongs: "Hiện tại chưa có phòng ở đây" });
       } else {
