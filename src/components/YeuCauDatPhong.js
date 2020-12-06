@@ -71,7 +71,6 @@ class YeuCauDatPhong extends React.Component {
 
   xoa = (e) => {
     let id = e.target.id;
-    let val = document.getElementById(id).value;
     let url = `http://localhost:3030/phong/${id}`;
     let data = { emailkhach: "" };
     axios.patch(url, data);
