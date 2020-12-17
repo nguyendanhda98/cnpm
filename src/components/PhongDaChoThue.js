@@ -9,7 +9,6 @@ class PhongDaChoThue extends React.Component {
 
     let timkiem = async (event) => {
       var data = localStorage.getItem("email");
-      var thinh = "dep trai"
       const res = await axios.get(
         `http://localhost:3030/phong?emailchu=${data}`
       );

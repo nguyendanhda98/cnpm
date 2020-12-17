@@ -13,20 +13,26 @@ import PhongDaChoThue from "./components/PhongDaChoThue";
 import YeuCauDatPhong from "./components/YeuCauDatPhong";
 import QuanLyPhong from "./components/QuanLyPhong";
 import Admin from "./components/Admin";
+import Home from "./components-remake/Home";
+import Search from "./components-remake/Search";
+import SignIn from "./components-remake/SignIn";
+import SignUp from "./components-remake/SignUp";
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          {/* <DieuHuong user={localStorage.getItem("ten")} /> */}
+          {/* <Home />
+          <Search />
+          <SignUp /> */}
           <DieuHuong user={localStorage.getItem("ten")} />
           <Route exact path="/" component={TimKiem} />
           <Route path="/dangnhap" component={DangNhap} />
           <Route path="/dangky" component={DangKy} />
           <Route path="/chunha" component={ChuNha} />
           <Route path="/chitiet" component={ChiTiet} />
-          <Route path="/ThongTinCaNhan" component={ThongTinCaNhan } />
+          <Route path="/ThongTinCaNhan" component={ThongTinCaNhan} />
           <Route path="/PhongDaDat" component={PhongDaDat} />
           <Route path="/PhongDaChoThue" component={PhongDaChoThue} />
           <Route path="/YeuCauDatPhong" component={YeuCauDatPhong} />
