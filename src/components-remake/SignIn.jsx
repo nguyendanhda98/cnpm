@@ -13,6 +13,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import axios from "axios";
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -45,6 +48,39 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+const dangnhap = async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const matkhau = document.getElementById("password").value;
+    if (email === "" || matkhau === "") {
+      e.preventDefault();
+      alert("Email và Mật khẩu không được để trống");
+    } else {
+      let dulieu = await axios.get(
+        `http://localhost:3030/taikhoan?email=${email}`
+      );
+      let x = dulieu.data.data; //mang
+      for (let i of x ) {
+      var emailCheck = i.email;
+      var matkhauCheck = i.matkhau;
+      var ten = i.ten;
+      var id = i._id
+      }
+      if (email === emailCheck && matkhau === matkhauCheck) {
+        alert("Đăng nhập thành công");
+        localStorage.setItem("email", email);
+        localStorage.setItem("ten", ten);
+        localStorage.setItem("id", id)
+        
+        window.location.replace("/");
+      } else {
+        alert("Tài khoản hoặc mật khẩu không chính xác");
+      }
+
+    }
+    
+  };
 
 export default function SignIn() {
   const classes = useStyles();
@@ -92,6 +128,7 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={(e) => {dangnhap(e)}}
           >
             Sign In
           </Button>

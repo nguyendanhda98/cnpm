@@ -3,8 +3,7 @@ import "../css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 class DieuHuong extends React.Component {
-
-  state = {ten: this.props.user}
+  state = { ten: this.props.user };
 
   dangxuat = (e) => {
     e.preventDefault();
@@ -12,7 +11,7 @@ class DieuHuong extends React.Component {
     localStorage.removeItem("email");
     localStorage.removeItem("ten");
     window.location.replace("/");
-  }
+  };
 
   render() {
     return (
@@ -63,7 +62,7 @@ class DieuHuong extends React.Component {
             <Link className="nav-item nav-link" to="/Admin">
               Admin
             </Link>
-    <p className="nav-item nav-link">Xin chào {this.state.ten}</p>
+            <p className="nav-item nav-link">Xin chào {this.state.ten}</p>
           </div>
         </div>
       </nav>

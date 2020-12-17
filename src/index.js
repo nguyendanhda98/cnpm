@@ -13,10 +13,14 @@ import PhongDaChoThue from "./components/PhongDaChoThue";
 import YeuCauDatPhong from "./components/YeuCauDatPhong";
 import QuanLyPhong from "./components/QuanLyPhong";
 import Admin from "./components/Admin";
+import AppBar from "./components-remake/AppBar";
 import Home from "./components-remake/Home";
 import Search from "./components-remake/Search";
 import SignIn from "./components-remake/SignIn";
 import SignUp from "./components-remake/SignUp";
+import Products from "./components-remake/Products";
+import Container from "./components-remake/Container";
+import Room from "./components-remake/Room";
 
 class App extends React.Component {
   render() {
@@ -26,10 +30,16 @@ class App extends React.Component {
           {/* <Home />
           <Search />
           <SignUp /> */}
-          <DieuHuong user={localStorage.getItem("ten")} />
-          <Route exact path="/" component={TimKiem} />
-          <Route path="/dangnhap" component={DangNhap} />
-          <Route path="/dangky" component={DangKy} />
+          {/* <DieuHuong user={localStorage.getItem("ten")} /> */}
+          <AppBar />
+          {/* <Container /> */}
+          {/* <Products /> */}
+          {/* <Route exact path="/" component={TimKiem} /> */}
+          <Route exact path="/" component={Search} />
+          {/* <Route path="/dangnhap" component={DangNhap} /> */}
+          <Route path="/dangnhap" component={SignIn} />
+          {/* <Route path="/dangky" component={DangKy} /> */}
+          <Route path="/dangky" component={SignUp} />
           <Route path="/chunha" component={ChuNha} />
           <Route path="/chitiet" component={ChiTiet} />
           <Route path="/ThongTinCaNhan" component={ThongTinCaNhan} />

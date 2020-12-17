@@ -2,6 +2,8 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 export default function Grouped() {
   const options = top100Films.map((option) => {
@@ -13,18 +15,23 @@ export default function Grouped() {
   });
 
   return (
-    <Autocomplete
-      id="grouped-demo"
-      options={options.sort(
-        (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
-      )}
-      groupBy={(option) => option.firstLetter}
-      getOptionLabel={(option) => option.title}
-      style={{ width: 300 }}
-      renderInput={(params) => (
-        <TextField {...params} label="Bạn muốn ở đâu?" variant="outlined" />
-      )}
-    />
+    <div>
+      <Autocomplete
+        id="grouped-demo"
+        options={options.sort(
+          (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
+        )}
+        groupBy={(option) => option.firstLetter}
+        getOptionLabel={(option) => option.title}
+        style={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField {...params} label="Bạn muốn ở đâu?" variant="outlined" />
+        )}
+      />
+      <Button variant="contained" color="primary">
+        Tìm kiếm
+      </Button>
+    </div>
   );
 }
 
