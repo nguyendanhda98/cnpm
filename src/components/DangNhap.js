@@ -14,23 +14,24 @@ class DangNhap extends React.Component {
         `http://localhost:3030/taikhoan?email=${email}`
       );
       let x = dulieu.data.data; //mang
-      for (let i of x ) {
-      var emailCheck = i.email;
-      var matkhauCheck = i.matkhau;
-      var ten = i.ten;
-      var id = i._id
+      for (let i of x) {
+        var emailCheck = i.email;
+        var matkhauCheck = i.matkhau;
+        var ten = i.ten;
+        var id = i._id;
+        var loai = i.loai;
       }
       if (email === emailCheck && matkhau === matkhauCheck) {
         alert("Đăng nhập thành công");
         localStorage.setItem("email", email);
         localStorage.setItem("ten", ten);
-        localStorage.setItem("id", id)
-        
+        localStorage.setItem("id", id);
+        localStorage.setItem("loai", loai);
+
         window.location.replace("/");
       } else {
         alert("Tài khoản hoặc mật khẩu không chính xác");
       }
-
     }
   };
 

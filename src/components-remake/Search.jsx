@@ -4,6 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Room from "./Room";
+
 
 export default function Grouped() {
   const options = top100Films.map((option) => {
@@ -13,10 +15,10 @@ export default function Grouped() {
       ...option,
     };
   });
-
+  const phong = {diachi: "Ha Noi", giaphong: "1"};
   return (
     <div>
-      <Autocomplete
+      {/* <Autocomplete
         id="grouped-demo"
         options={options.sort(
           (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
@@ -30,7 +32,8 @@ export default function Grouped() {
       />
       <Button variant="contained" color="primary">
         Tìm kiếm
-      </Button>
+      </Button> */}
+      <Room {...phong} />
     </div>
   );
 }
