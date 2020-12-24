@@ -1,11 +1,11 @@
 /* eslint-disable no-use-before-define */
-import React from "react";
+import React, {useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Room from "./Room";
-
+import axios from "axios";
 
 export default function Grouped() {
   const options = top100Films.map((option) => {
@@ -15,10 +15,38 @@ export default function Grouped() {
       ...option,
     };
   });
-  const phong = {diachi: "Ha Noi", giaphong: "1"};
+
+  const [Phong, setPhong] = useState("")
+
+const timkiem = async (event) => {
+    event.preventDefault();
+    var data = document.getElementById("grouped-demo").value;
+    const res = await axios.get(`http://localhost:3030/phong?thanhpho=${data}`);
+    const x = res.data.data; //mang
+    if (x.length === 0) {
+      setPhong("Hiện tại chưa có phòng ở đây");
+    } else {
+      let ax = x.filter((b) => b.emailkhach === "");
+      let a = ax.filter((b) => b.emailthue === "");
+      if (a.length === 0) {
+        setPhong("Hiện tại chưa có phòng ở đây");
+      } else {
+        let z = a.map((y) => {
+          return (
+            <div key={y._id}>
+              {/* <Phong phong={y} /> */}
+                    <Room {...y} />
+            </div>
+          );
+        });
+        setPhong(z);
+      }
+    }
+  };
+
   return (
     <div>
-      {/* <Autocomplete
+      <Autocomplete
         id="grouped-demo"
         options={options.sort(
           (a, b) => -b.firstLetter.localeCompare(a.firstLetter)
@@ -30,10 +58,10 @@ export default function Grouped() {
           <TextField {...params} label="Bạn muốn ở đâu?" variant="outlined" />
         )}
       />
-      <Button variant="contained" color="primary">
+      <Button variant="contained" color="primary" onClick={timkiem}>
         Tìm kiếm
-      </Button> */}
-      <Room {...phong} />
+      </Button>
+      {Phong}
     </div>
   );
 }

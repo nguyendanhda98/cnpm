@@ -30,17 +30,17 @@ class App extends React.Component {
           {/* <Home />
           <Search />
           <SignUp /> */}
-          <DieuHuong user={localStorage.getItem("ten")} />
-          {/* <AppBar /> */}
+          {/* <DieuHuong user={localStorage.getItem("ten")} /> */}
+          <AppBar />
           {/* <Container /> */}
           {/* <Products /> */}
-          <Route exact path="/" component={TimKiem} />
-          {/* <Route exact path="/" component={Search} /> */}
+          {/* <Route exact path="/" component={TimKiem} /> */}
+          <Route exact path="/" component={Search} />
 
-          <Route path="/dangnhap" component={DangNhap} />
-          {/* <Route path="/dangnhap" component={SignIn} /> */}
-          <Route path="/dangky" component={DangKy} />
-          {/* <Route path="/dangky" component={SignUp} /> */}
+          {/* <Route path="/dangnhap" component={DangNhap} /> */}
+          <Route path="/dangnhap" component={SignIn} />
+          {/* <Route path="/dangky" component={DangKy} /> */}
+          <Route path="/dangky" component={SignUp} />
           <Route path="/chunha" component={ChuNha} />
           <Route path="/chitiet" component={ChiTiet} />
           <Route path="/ThongTinCaNhan" component={ThongTinCaNhan} />
