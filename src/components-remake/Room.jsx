@@ -29,7 +29,8 @@ const [GiaPhong, setGiaPhong] = useState(props.giaphong)
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <form action="/chitiet" method="GET">
+<CardActionArea>
         <CardMedia
           className={classes.media}
           image="../logo192.png"
@@ -45,13 +46,17 @@ const [GiaPhong, setGiaPhong] = useState(props.giaphong)
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Đặt phòng
-        </Button>
-        <Button size="small" color="primary">
+        <Button type="submit" size="small" color="primary">
           Chi tiết
         </Button>
       </CardActions>
+      <input
+                hidden
+                name="_id"
+                defaultValue={props._id}
+              ></input>
+      </form>
+      
     </Card>
   );
 }

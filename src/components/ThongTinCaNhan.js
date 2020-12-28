@@ -20,7 +20,7 @@ class ThongTinCaNhan extends Component {
   }
 
   luu = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let matkhau2 = document.getElementById("exampleInputPassword1").value;
     let matkhau1 = document.getElementById("exampleInputPassword2").value;
 

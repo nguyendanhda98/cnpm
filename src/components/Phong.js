@@ -2,13 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class Phong extends React.Component {
-
   render() {
     return (
       <div>
         <div className="card" style={{ width: "18rem" }}>
           <form action="/chitiet" method="GET">
-            <img src="../logo192.png" className="card-img-top" alt="..." />
+            <img
+              src={this.props.phong.linkanh}
+              className="card-img-top"
+              alt="..."
+            />
             <div className="card-body">
               <h5 className="card-title">{this.props.phong.diachi}</h5>
               <p className="card-text">

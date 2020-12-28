@@ -15,6 +15,7 @@ module.exports = function (app) {
       emailchu: { type: String, required: false },
       emailkhach: { type: String, required: false },
       emailthue: { type: String, required: false },
+      linkanh: { type: String, required: false },
     },
     {
       timestamps: true,

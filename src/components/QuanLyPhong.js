@@ -25,19 +25,35 @@ class QuanLyPhong extends React.Component {
           }
           return (
             <div key={y._id}>
-              <Phong phong={y} />
-              <input
-                id={y._id}
-                className="btn btn-primary"
-                name={y._id}
-                onClick={this.anhien}
-                type="submit"
-                value={khach}
-              />
+              <form key={y._id} action="/suaphong" method="GET">
+                <Phong phong={y} />
+                <input
+                  id={y._id}
+                  className="btn btn-primary"
+                  name={y._id}
+                  onClick={this.anhien}
+                  type="submit"
+                  value={khach}
+                />
 
-              <button id={y._id} className="btn btn-primary" onClick={this.xoa}>
-                Xoá
-              </button>
+                <button
+                  type="submit"
+                  id={y._id}
+                  className="btn btn-primary"
+                  onClick={this.sua}
+                >
+                  Sửa
+                </button>
+
+                <button
+                  id={y._id}
+                  className="btn btn-primary"
+                  onClick={this.xoa}
+                >
+                  Xoá
+                </button>
+                <input hidden name="_id" defaultValue={y._id}></input>
+              </form>
             </div>
           );
         });
@@ -56,7 +72,10 @@ class QuanLyPhong extends React.Component {
     window.location.replace("/QuanLyPhong");
   };
 
+  sua = (e) => {};
+
   anhien = (e) => {
+    e.preventDefault();
     let id = e.target.id;
     let val = document.getElementById(id).value;
     let url = `http://localhost:3030/phong/${id}`;

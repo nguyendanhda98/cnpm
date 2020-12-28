@@ -1,16 +1,37 @@
 import React from "react";
 import axios from "axios";
 
-class ChuNha extends React.Component {
+class SuaPhong extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      thanhpho: "",
       diachi: "",
       giaphong: "",
       chitiet: "",
+      thanhpho: "",
+      id: "",
       linkanh: "",
     };
+
+    let chitiet = async () => {
+      let id = this.props.location.search;
+
+      let res = await axios.get(`http://localhost:3030/phong${id}`);
+      let x = res.data.data; //mang
+      x.map((y) => {
+        return this.setState({
+          diachi: y.diachi,
+          giaphong: y.giaphong,
+          chitiet: y.chitiet,
+          emailchu: y.emailchu,
+          thanhpho: y.thanhpho,
+          id: y._id,
+          linkanh: y.linkanh,
+        });
+      });
+    };
+    chitiet();
   }
 
   thanhpho = (e) => {
@@ -36,17 +57,14 @@ class ChuNha extends React.Component {
       chitiet: e.target.value,
     });
   };
+
   linkanh = (e) => {
     this.setState({
       linkanh: e.target.value,
     });
   };
-  taianh = (e) => {
-    // this.props.history.push("uploadphoto.html");
-    window.location.replace("uploadphoto.html");
-  };
 
-  taophong = (e) => {
+  taophong = async (e) => {
     let thanhpho1 = this.state.thanhpho;
     let diachi1 = this.state.diachi;
     let giaphong1 = this.state.giaphong;
@@ -58,7 +76,7 @@ class ChuNha extends React.Component {
     ) {
       alert("Vui lòng điền đầy đủ thông tin");
     } else {
-      alert("Tạo phòng thành công");
+      alert("thành công");
 
       const data = {
         thanhpho: this.state.thanhpho,
@@ -70,7 +88,8 @@ class ChuNha extends React.Component {
         emailkhach: "",
         emailthue: "",
       };
-      axios.post("http://localhost:3030/phong", data);
+      let url2 = `http://localhost:3030/phong/${this.state.id}`;
+      await axios.patch(url2, data);
       this.props.history.push("/QuanLyPhong");
     }
   };
@@ -162,11 +181,12 @@ class ChuNha extends React.Component {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Địa chỉ"
+            defaultValue={this.state.diachi}
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="diaChi">Giá phòng/tháng</label>
+          <label htmlFor="diaChi">Giá phòng (triệu/tháng)</label>
           <input
             onChange={this.giaphong}
             type="number"
@@ -175,6 +195,7 @@ class ChuNha extends React.Component {
             id="diaChi"
             aria-describedby="emailHelp"
             placeholder="Giá phòng"
+            defaultValue={this.state.giaphong}
           />
         </div>
 
@@ -188,6 +209,7 @@ class ChuNha extends React.Component {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="7"
+            defaultValue={this.state.chitiet}
           ></textarea>
         </div>
         <div className="form-group">
@@ -199,6 +221,7 @@ class ChuNha extends React.Component {
             className="form-control"
             id="linkanh"
             placeholder="Link ảnh"
+            defaultValue={this.state.linkanh}
           />
         </div>
         <div className="form-group">
@@ -208,11 +231,11 @@ class ChuNha extends React.Component {
           </form>
         </div>
         <button onClick={this.taophong} className="btn btn-primary">
-          Bắt đầu tạo phòng cho thuê
+          Lưu
         </button>
       </div>
     );
   }
 }
 
-export default ChuNha;
+export default SuaPhong;

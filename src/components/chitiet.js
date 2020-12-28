@@ -5,7 +5,13 @@ class ChiTiet extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { diachi: "", giaphong: "", chitiet: "" };
+    this.state = {
+      diachi: "",
+      giaphong: "",
+      chitiet: "",
+      thanhpho: "",
+      linkanh: "",
+    };
 
     let chitiet = async () => {
       let id = this.props.location.search;
@@ -17,6 +23,8 @@ class ChiTiet extends React.Component {
           giaphong: y.giaphong,
           chitiet: y.chitiet,
           emailchu: y.emailchu,
+          thanhpho: y.thanhpho,
+          linkanh: y.linkanh,
         });
       });
     };
@@ -43,7 +51,7 @@ class ChiTiet extends React.Component {
     return (
       <div className="row">
         <div className="card" style={{ width: "18rem" }}>
-          <img src="../logo192.png" className="card-img-top" alt="..." />
+          <img src={this.state.linkanh} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{this.state.diachi}</h5>
             <p className="card-text">{this.state.giaphong}</p>
@@ -51,12 +59,13 @@ class ChiTiet extends React.Component {
               Đặt phòng
             </button>
           </div>
-          <div class="form-group">
+          <div className="form-group">
             Chủ phòng: {this.state.emailchu} <br />
           </div>
         </div>
 
         <div className="form-group">
+          <div>Thành phố: {this.state.thanhpho}</div>
           <label>Thông tin chi tiết</label>
           <br />
           {this.state.chitiet}
