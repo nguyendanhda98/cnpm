@@ -20,6 +20,8 @@ class YeuCauDatPhong extends React.Component {
         let s = a.filter((b) => b.emailkhach !== "an");
         const z = s.map((y) => {
           let khach = y.emailkhach;
+          let khach1 = y.emailkhach;
+
           if (khach === "") {
             khach = "Ẩn";
           } else {
@@ -28,6 +30,7 @@ class YeuCauDatPhong extends React.Component {
           return (
             <div key={y._id}>
               <Phong phong={y} />
+              <div>Khách hàng: {khach1}</div>
               <input
                 id={y._id}
                 className="btn btn-primary"
@@ -63,8 +66,8 @@ class YeuCauDatPhong extends React.Component {
     let url = `http://localhost:3030/phong/${id}`;
     let dulieu = await axios.get(url);
     let emailkhach = dulieu.data.emailkhach;
-    let data = {emailkhach: "an", emailthue: emailkhach};
-    axios.patch(url,data);
+    let data = { emailkhach: "an", emailthue: emailkhach };
+    axios.patch(url, data);
     alert("Chấp nhận yêu cầu thành công");
     window.location.replace("/YeuCauDatPhong");
   };

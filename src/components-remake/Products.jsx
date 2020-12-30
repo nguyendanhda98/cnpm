@@ -18,14 +18,59 @@ import Search from "./Search";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+    // <Typography variant="body2" color="textSecondary" align="center">
+    //   {'Copyright © '}
+    //   <Link color="inherit" href="https://material-ui.com/">
+    //     Your Website
+    //   </Link>{' '}
+    //   {new Date().getFullYear()}
+    //   {'.'}
+    // </Typography>
+    <div>
+      
+                <div
+                  className="card "
+                  style={{
+                    padding: "0",
+                    backgroundColor: "#545454",
+                    border: "1px solid white",
+                    color: "#c8c3bd",
+                  }}
+                >
+                  <img
+                    className="card-img-top"
+                    src=""
+                    alt="Card image cap"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">tiêu đề</h5>
+                    <p className="card-text">chú thích</p>
+
+                    <p className="card-text">
+                      Tổng bài học 
+                    </p>
+                    <p className="card-text">giá khoá học  coin</p>
+                    <div>
+                      <Link className="navbar-brand" to="/">
+                        <p>Tổng số học viên</p>
+                      </Link>
+                      <span className="card-text">
+                        <i class="fas fa-users"></i> chieu dai
+                      </span>
+
+                      <Link
+                        style={{ float: "right", marginTop: "20px" }}
+                        className="btn btn-light my-2 my-sm-0 btn-detail-courses"
+                        
+                      >
+                        Chi tiết khoá học
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              
+            
+    </div>
   );
 }
 

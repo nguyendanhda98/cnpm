@@ -6,6 +6,29 @@ class TimKiem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { phongs: [] };
+    let timkiem1 = async () => {
+      const res = await axios.get(`http://localhost:3030/phong`);
+      const x = res.data.data; //mang
+      if (x.length === 0) {
+        this.setState({ phongs: "Hiện tại chưa có phòng ở đây" });
+      } else {
+        let ax = x.filter((b) => b.emailkhach === "");
+        let a = ax.filter((b) => b.emailthue === "");
+        if (a.length === 0) {
+          this.setState({ phongs: "Hiện tại chưa có phòng ở đây" });
+        } else {
+          let z = a.map((y) => {
+            return (
+              <div key={y._id}>
+                <Phong phong={y} />
+              </div>
+            );
+          });
+          this.setState({ phongs: z });
+        }
+      }
+    };
+    timkiem1();
   }
 
   timkiem = async (event) => {

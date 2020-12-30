@@ -49,12 +49,12 @@ class ChiTiet extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row container">
         <div className="card" style={{ width: "18rem" }}>
           <img src={this.state.linkanh} className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{this.state.diachi}</h5>
-            <p className="card-text">{this.state.giaphong}</p>
+            <p className="card-text">{this.state.giaphong} triệu / tháng</p>
             <button className="btn btn-primary" onClick={this.datphong}>
               Đặt phòng
             </button>
